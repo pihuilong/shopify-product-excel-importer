@@ -1,7 +1,8 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { TraceIdMiddleware } from './common';
 import { AppConfigModule } from './config';
 import { MyLoggerModule, UtilModule } from './internal';
 
@@ -10,4 +11,8 @@ import { MyLoggerModule, UtilModule } from './internal';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(TraceIdMiddleware).forRoutes('*');
+  }
+}
