@@ -7,3 +7,4 @@ export const LOG_LEVEL = {
   ERROR: 'error',
   VERBOSE: 'verbose',
 };
+export const MAX_REQ_TIME = 300 * 1000; // 5 minutes
