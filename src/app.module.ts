@@ -11,10 +11,10 @@ import {
   TraceIdMiddleware,
 } from './common';
 import { AppConfigModule } from './config';
-import { MyLoggerModule, UtilModule } from './internal';
+import { HealthModule, MyLoggerModule, UtilModule } from './internal';
 
 @Module({
-  imports: [AppConfigModule, UtilModule, MyLoggerModule],
+  imports: [AppConfigModule, UtilModule, MyLoggerModule, HealthModule],
   controllers: [AppController],
   providers: [
     // NOTE: Register order and execution order are reversed(register earlier, execute later)
